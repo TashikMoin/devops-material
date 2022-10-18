@@ -1,0 +1,58 @@
+Farhan's Attempt 1:
+
+1. Get the names of two pods consuming most cpu and output to a file /opt/result/q001
+2. Monitor the logs of the pod with name "monitor-pod" and output the line with file not found error to  file /opt/result/q002
+3. Create a clusterRole in app1 namespace with create permissions of DaemonSets,Pods,Deployments and Bind it to a service account named sampleserviceaccount
+4. create a pod with name zx-nginx having following container:
+	name: nginx
+	image: nginx
+	name: redis
+	image: redis
+5. Backup the etcd on given path and restore the backup given on a path.
+6. Upgrade Only the master node Kubernetes version.
+7. Add a sidecar container to an already running monitoring pod that reads logs at /var/log and mounts to the volume at host path.
+8. Create an Ingress that makes already running Hi pod available on /hi route and check its availability by curl -k internalIP/hi output.
+9. Create a network policy that allows only the pods of namespace app-2 to connect to pods on db namespaces on port 80.
+10. There is deployment running named deploy-nginx. Scale it to 5 replicas and record this change.
+11. Create a pod which has two containers name/images - nginx/redis in the namespace demo-selector and set nodeselector disk=disk001
+12. One of the worker node of cluster is not ready. please check the issue with the node and make sure the resolution is permanent. you can use 'ssh node-name' command to login to the worker node.
+
+
+Umar's:
+
+Create a service account names abc. Then create a cluster role that can create daemonset, secrets and bind the created serviceaccount abc to this cluster role.
+Create a persistent volume of storage class manual and size must be 3Gi and permission should be set to Read Write Many.
+Create a persistent volume claim of storage class icsi and size must be 2Gi. Create a pod and mount this PVC as volume inside the pod on path /tmp. Once done, increase the size of PVC to 10Gi and record this change.
+The current Kubernetes version of Master node is 1.21.0. Upgrade all the master node components to 1.22.0. Upgrade kubeadm, kubelet, kubectl.
+Take backup of etcd cluster. Restore the etcd cluster from an existing backup file present at /data.
+Worker node is down of abc-cluster, check and resolve the issue. (Kubelet was down, it was started)
+Create a ingress resource that exposes the service on internal IP of the work node the pod is running on at <INTERNAL_IP>/hello.
+Create a network policy that allow only the pods of namespace internal to connect to pods on db namespaces on port 80.
+There's a pod runnning named service in default namespace. Add a sidecar container to pod with image gcr.io/pause and mount /var/log to both these containers. Make sure no configurational change is made to this pod.
+There is deployment running named deploy-nginx. Scale it down to 5 replicas and record this change.
+Create a pod that has toleration to master node and run a pod on master node without having to add any label to master node.
+Create a deployment and make sure each pod runs on one node and no two pods should run on the same node.
+Expose the deployment as nodeport. Make sure pods IP is added as endpoint in service.
+Create a secret named secret in secret namespace having user data user=user1 and password=pass1234. Run a pod named secret-pod and add this secret as volume in pod.
+Find the pod with high cpu usage in namespace prod and write its name in /data/highest_cpu_pod.txt
+Find all the pods with label env=prod and write their names in a file
+
+
+Sana's:
+
+1 - Create a clusterrole deployment-role which has ability to create Daemonset, persistantVolume, statefulset. create a service account named pri-sa001 in namespace private-ground and bind it to the deployment-role.
+2 - Create a pod which has two containers name/images - nginx/memcached in the namespace prod-area and set nodeselector disk=disk001
+3 - There is a pod running named legacy - add a sidecar container which will run command 'tail -f /var/log/legacy-app.log' and it mount the available volume with path /var/log.
+4 - In the present cluster check the nodes which are ready to host the pods (do not include the nodes that are tainted NoSchedule) - and write the answer in the following file '/opt/quiz/nodes-count004.txt'.
+5 - There are multiple pods running. find the pods that has label type=backend-service and are using most cpu - write answer in this file '/opt/quiz/cpu-mose-usage005.txt'
+6 - Create a networkpolicy in the namespace backend-tier, this policy should allow only the pods that are part of namespace important-allowed to connect to the pods to port 9000 only. make sure no pod other than namespaced important-allowed could connect to the pods in this namespace and pods cannot connect to port other than 9000.
+7 - There is a deployment named nginx007 is running - make some changes to it configuration and add a port specification to expose it to port 80/tcp named http. then create a internal service to expose the deployment with target port to http. Also create a service of type NodePort to expose all endpoints to external traffic.
+8 - There is deployment running named deployment-nginx. Scale it down to 3 replicas and record this change.
+9 - Create a ingress resource that exposes the an existing pod named nginx-009 with a service as backend named hello-services on path /hello.
+10 - Create a persistent volume of service class csi-008 and size must be 2Gi and permission should be set to ReadWriteOnce.
+11 - Create a persistent volume claim of service class csi-si01 and size must be 1Gi. Create a pod and mount this PVC as volume inside the pod on path /var/data. Once done, increase the size of PVC to 10Gi and record this change. you can use kubectl edit or kubectl patch command to achieve this.
+12 - The current Kubernetes version of Master node is 1.22.0. Upgrade all the master node components to 1.22.1. Upgrade kubeadm, kubelet, kubectl.
+13 - One of the worker node of cluster k8s-M1-C2 is not ready. please check the issue with the node and make sure the resolution is permanent. you can use 'ssh node-name' command to login to the worker node.
+14 - Take backup of etcd cluster at path '/data/etcd-backup/backup0005'. Once done, there is a backup exist at following location, please restore it to the current cluster.
+
+
